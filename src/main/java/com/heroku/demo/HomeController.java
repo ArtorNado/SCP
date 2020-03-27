@@ -37,29 +37,21 @@ public class HomeController {
         this.repository = repository;
     }
 
-    /*@RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String home(ModelMap model) {
         List<Record> records = repository.findAll();
         model.addAttribute("records", records);
         model.addAttribute("insertRecord", new Record());
         return "home";
-    }*/
-
-    @RequestMapping(method = RequestMethod.GET)
-    public String login(ModelMap model) {
-        List<Record> records = repository.findAll();
-        model.addAttribute("records", records);
-        model.addAttribute("insertRecord", new Record());
-        return "login";
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public String insertData(ModelMap model, 
-                             @ModelAttribute("insertRecgord") @Valid Record record,
+                             @ModelAttribute("insertRecord") @Valid Record record,
                              BindingResult result) {
         if (!result.hasErrors()) {
             repository.save(record);
         }
-        return login(model);
+        return home(model);
     }
 }
