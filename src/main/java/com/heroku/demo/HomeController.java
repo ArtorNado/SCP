@@ -42,16 +42,24 @@ public class HomeController {
         List<Record> records = repository.findAll();
         model.addAttribute("records", records);
         model.addAttribute("insertRecord", new Record());
-        return "registration";
+        return "home";
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public String login(ModelMap model) {
+        List<Record> records = repository.findAll();
+        model.addAttribute("records", records);
+        model.addAttribute("insertRecord", new Record());
+        return "login";
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public String insertData(ModelMap model, 
-                             @ModelAttribute("insertRecord") @Valid Record record,
+                             @ModelAttribute("insertRecgord") @Valid Record record,
                              BindingResult result) {
         if (!result.hasErrors()) {
             repository.save(record);
         }
-        return home(model);
+        return login(model);
     }
 }
