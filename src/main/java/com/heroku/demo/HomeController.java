@@ -42,7 +42,7 @@ public class HomeController {
         List<Record> records = repository.findAll();
         model.addAttribute("records", records);
         model.addAttribute("insertRecord", new Record());
-        return "home";
+        return "registration";
     }
 
     @RequestMapping(method = RequestMethod.POST)
