@@ -37,13 +37,13 @@ public class HomeController {
         this.repository = repository;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    /*@RequestMapping(method = RequestMethod.GET)
     public String home(ModelMap model) {
         List<Record> records = repository.findAll();
         model.addAttribute("records", records);
         model.addAttribute("insertRecord", new Record());
         return "home";
-    }
+    }*/
 
     @RequestMapping(method = RequestMethod.GET)
     public String login(ModelMap model) {
